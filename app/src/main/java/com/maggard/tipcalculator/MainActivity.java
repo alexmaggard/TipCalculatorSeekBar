@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.view.View.OnClickListener;
@@ -28,6 +29,7 @@ OnClickListener{
     private TextView totalTextView;
     private Button minusPercentButton;
     private Button plusPercentButton;
+    private SeekBar seekBar;
 
     //define instance variables
 
@@ -36,6 +38,7 @@ OnClickListener{
 
     //define shared preferences
     private SharedPreferences savedValues;
+
 
 
     @Override
@@ -134,6 +137,24 @@ OnClickListener{
         tipPercent = savedValues.getFloat("tipPercent", 0.15f);
 
         //call calculate and display
+        calculateAndDisplay();
+    }
+
+    //***************************************************************************************************
+    //event handler for seek bar  **********************************************************************
+    //***************************************************************************************************
+
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+        percentTextView.setText(progress +"%");
+    }
+
+    public void onStartTrackingTouch(SeekBar seekBar){
+        //TODO auto generated method stub
+    }
+
+    public void onStopTrackingTouch(SeekBar seekBar){
+        int progress = seekBar.getProgress();
+        tipPercent = (float) progress/100;
         calculateAndDisplay();
     }
 }

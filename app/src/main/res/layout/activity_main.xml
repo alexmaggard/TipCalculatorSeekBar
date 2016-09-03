@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.maggard.tipcalculator.MainActivity">
+    tools:context="com.maggard.tipcalculator.MainActivity"
+    android:background="#c5c2c2">
 
     <TextView
         android:layout_width="wrap_content"
@@ -123,5 +124,18 @@
         android:layout_alignTop="@+id/totalLabel"
         android:layout_alignLeft="@+id/tipTotalTextView"
         android:layout_alignStart="@+id/tipTotalTextView" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_marginTop="43dp"
+        android:maxWidth="@dimen/abc_action_bar_stacked_max_height"
+        android:indeterminate="false"
+        android:max="30"
+        android:progress="15"
+        android:minWidth="@dimen/abc_action_bar_stacked_max_height"
+        android:layout_below="@+id/totalTextView"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
