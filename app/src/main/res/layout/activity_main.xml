@@ -65,36 +65,6 @@
         android:layout_marginStart="60dp"
         android:background="#f7f282" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="@string/plus"
-        android:id="@+id/plusPercentButton"
-        android:background="#fc4d03"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:textSize="26sp"
-        android:layout_alignTop="@+id/percentTextView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="@string/minus"
-        android:id="@+id/minusPercentButton"
-        android:layout_alignTop="@+id/plusPercentButton"
-        android:layout_toLeftOf="@+id/plusPercentButton"
-        android:layout_toStartOf="@+id/plusPercentButton"
-        android:background="#fc4d03"
-        android:layout_marginRight="10dp"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:textSize="30sp"
-        android:layout_marginLeft="20dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="45dp"
@@ -129,13 +99,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/seekBar"
-        android:layout_marginTop="43dp"
         android:maxWidth="@dimen/abc_action_bar_stacked_max_height"
         android:indeterminate="false"
         android:max="30"
         android:progress="15"
         android:minWidth="@dimen/abc_action_bar_stacked_max_height"
-        android:layout_below="@+id/totalTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/percentTextView"
+        android:layout_alignRight="@+id/BillAmountEditText"
+        android:layout_alignEnd="@+id/BillAmountEditText"
+        android:layout_marginRight="43dp"
+        android:layout_marginEnd="43dp" />
 
 </RelativeLayout>

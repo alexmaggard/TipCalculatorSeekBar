@@ -17,8 +17,7 @@ import android.view.View.OnClickListener;
 
 import java.text.NumberFormat;
 
-public class MainActivity extends AppCompatActivity implements OnEditorActionListener,
-OnClickListener{
+public class MainActivity extends AppCompatActivity implements OnEditorActionListener{
 
 
     //define variables for widgets
@@ -27,8 +26,8 @@ OnClickListener{
     private TextView percentTextView;
     private TextView tipTotalTextView;
     private TextView totalTextView;
-    private Button minusPercentButton;
-    private Button plusPercentButton;
+    //private Button minusPercentButton;
+    //private Button plusPercentButton;
     private SeekBar seekBar;
 
     //define instance variables
@@ -46,20 +45,25 @@ OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //get references to the widgets
+        //*************************************************************************************************************
+        //set reference to widgets
+        //***********************************************************************************************************
         billAmountEditText = (EditText) findViewById(R.id.BillAmountEditText);
         percentTextView = (TextView) findViewById(R.id.percentTextView);
         tipTotalTextView =(TextView) findViewById(R.id.tipTotalTextView);
         totalTextView = (TextView) findViewById(R.id.totalTextView);
-        minusPercentButton = (Button) findViewById(R.id.minusPercentButton);
-        plusPercentButton = (Button) findViewById(R.id.plusPercentButton);
-
+        //minusPercentButton = (Button) findViewById(R.id.minusPercentButton);
+       // plusPercentButton = (Button) findViewById(R.id.plusPercentButton);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
 
+        //*************************************************************************************************************
         //set listeners
+        //***********************************************************************************************************
+
         billAmountEditText.setOnEditorActionListener(this);
-        minusPercentButton.setOnClickListener(this);
-        plusPercentButton.setOnClickListener(this);
+       // minusPercentButton.setOnClickListener(this);
+       //plusPercentButton.setOnClickListener(this);
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int seekBarProgress = 0;
 
@@ -83,12 +87,16 @@ OnClickListener{
 
         }
 
-        //get SharedPreference object
+        //*************************************************************************************************************
+        //get shared preferences
+        //***********************************************************************************************************
         savedValues = getSharedPreferences("SavedValues", MODE_PRIVATE);
 
     }
 
-    // controls the soft keyboard
+    //*************************************************************************************************************
+    //softkeyboard
+    //***********************************************************************************************************
     @Override
     public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
         if(actionId == EditorInfo.IME_ACTION_DONE ||
@@ -98,7 +106,9 @@ OnClickListener{
         return false;
     }
 
+    //*************************************************************************************************************
     //calculate and display numbers
+    //***********************************************************************************************************
 
     private void calculateAndDisplay() {
 
@@ -129,7 +139,7 @@ OnClickListener{
     }
 
     //controls for percent buttons
-    @Override
+   /* @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.minusPercentButton:
@@ -141,8 +151,12 @@ OnClickListener{
                 calculateAndDisplay();
                 break;
         }
-    }
+    }*/
 
+
+    //*************************************************************************************************************
+    //on pause on resume methods
+    //***********************************************************************************************************
     @Override
     protected void onPause() {
         //save the instance variables
