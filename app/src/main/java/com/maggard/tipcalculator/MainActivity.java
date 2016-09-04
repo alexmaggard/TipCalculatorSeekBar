@@ -54,10 +54,34 @@ OnClickListener{
         minusPercentButton = (Button) findViewById(R.id.minusPercentButton);
         plusPercentButton = (Button) findViewById(R.id.plusPercentButton);
 
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
+
         //set listeners
         billAmountEditText.setOnEditorActionListener(this);
         minusPercentButton.setOnClickListener(this);
         plusPercentButton.setOnClickListener(this);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int seekBarProgress = 0;
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                seekBarProgress = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                int progress = seekBar.getProgress();
+                tipPercent = (float) progress/100;
+                calculateAndDisplay();
+            }
+        });{
+
+        }
 
         //get SharedPreference object
         savedValues = getSharedPreferences("SavedValues", MODE_PRIVATE);
@@ -138,23 +162,4 @@ OnClickListener{
 
         //call calculate and display
         calculateAndDisplay();
-    }
-
-    //***************************************************************************************************
-    //event handler for seek bar  **********************************************************************
-    //***************************************************************************************************
-
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
-        percentTextView.setText(progress +"%");
-    }
-
-    public void onStartTrackingTouch(SeekBar seekBar){
-        //TODO auto generated method stub
-    }
-
-    public void onStopTrackingTouch(SeekBar seekBar){
-        int progress = seekBar.getProgress();
-        tipPercent = (float) progress/100;
-        calculateAndDisplay();
-    }
-}
+    }}
